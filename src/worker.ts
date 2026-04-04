@@ -105,7 +105,9 @@ function landingPage(): string {
 .lab-table{width:100%;border-collapse:collapse;font-size:.8rem}.lab-table th,.lab-table td{padding:.5rem .75rem;text-align:left;border-bottom:1px solid #1e293b}.lab-table th{color:#a78bfa;font-weight:600}.lab-table td{color:#94a3b8}.badge{padding:.1rem .4rem;border-radius:8px;font-size:.7rem;font-weight:600}.badge.confirmed{background:#10b98133;color:#34d399}.badge.testing{background:#f59e0b33;color:#fbbf24}.badge.planned{background:#3b82f633;color:#60a5fa}
 footer{text-align:center;padding:2rem;color:#475569;font-size:.75rem}
 </style></head><body>
-<div class="hero"><h1>🌱 Seed UI</h1><p>Five presentation layers for Cocapn vessels</p></div>
+<div class="hero">
+      <img src="https://cocapn-logos.casey-digennaro.workers.dev/img/cocapn-logo-v1.png" alt="Cocapn" style="width:64px;height:auto;margin-bottom:.5rem;border-radius:8px;display:block;margin-left:auto;margin-right:auto">
+      <h1>🌱 Seed UI</h1><p>Five presentation layers for Cocapn vessels</p></div>
 <div class="tabs">
 <div class="tab" data-layer="spreadsheet">📊 Spreadsheet</div>
 <div class="tab" data-layer="messenger">💬 Messenger</div>
