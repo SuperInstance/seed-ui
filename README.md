@@ -1,60 +1,33 @@
-# Seed UI — Five Presentation Layers for Agents
+# Seed UI 🪴
+You send JSON. You get clean HTML. No rebuilds, no npm install.
 
-You built an agent that produces structured data. It’s hard to read. This renders that data into five distinct, human-usable interfaces. A stateless presentation service that returns clean HTML. Deployable anywhere that runs Cloudflare Workers.
+Your agent's output can become a spreadsheet, chat, timeline, matrix, or research lab.
 
----
-
-## Why this exists
-Agent interfaces often lock you into a single layout. You shouldn’t rebuild your frontend each time your agent outputs a new data type. Seed UI sits between your agent and the user: it accepts plain JSON and returns semantic HTML. Nothing more.
-
-## What makes this different
-- It does not own your data. It is stateless by design—each request stands alone.
-- Minimal client footprint. A single Cloudflare Worker file (~300 lines) with zero dependencies.
-- You don't extend it. You fork it. Change anything; never wait for upstream.
-- Compatible with any agent outputting JSON, not just Cocapn.
-
-## Live Demo
-Test it now with any JSON payload:
-[https://the-fleet.casey-digennaro.workers.dev/seed-ui](https://the-fleet.casey-digennaro.workers.dev/seed-ui)
-
-Append `?layer=` to see your data render instantly.
-
----
+**Live demo:** [the-fleet.casey-digennaro.workers.dev/seed-ui](https://the-fleet.casey-digennaro.workers.dev/seed-ui)  
+Append `?layer=` to render any JSON.
 
 ## Quick Start
-1. **Fork** this repository.
-2. **Deploy** using `npx wrangler deploy` (requires a free Cloudflare account).
-3. **Tweak** the layer templates in `src/index.ts` to match your data and style.
+1.  Fork this repository.
+2.  Deploy with `npx wrangler deploy` (free Cloudflare accounts work).
+3.  Tweak the layer templates in `src/index.ts`. Done.
 
-## How it Works
-Seed UI is a single Cloudflare Worker. It accepts JSON and a `layer` parameter via HTTP request, runs the matching template function, and returns semantic HTML. Every request is independent.
+You own every line. No upstream changes will ever break your UI.
 
-## Presentation Layers
-Five purpose-built templates for common agent outputs:
-- **Spreadsheet**: Tabular data and structured lists.
-- **Messenger**: Conversational threads and dialogue.
-- **Feed**: Chronological event or log streams.
-- **Matrix**: Relationship grids and cross-references.
-- **Research Lab**: Experimental or exploratory workspaces.
+## How It Works
+This is a single Cloudflare Worker. You send JSON and a layout name. It runs the matching template and returns semantic HTML. Every request is independent. All rendering happens on the edge; pages typically load in under 100ms.
 
-## Features
-- Zero dependencies. Pure TypeScript, HTML, and CSS.
-- Fork-first philosophy. You own your presentation layer completely.
-- Semantic, accessible markup. Style it without fighting overrides.
-- Theme selection via URL parameter (`?theme=dark`).
-- Content Security Policy (CSP) headers pre-configured.
-- Optional Cloudflare KV binding for stateful features (disabled by default).
+## Key Details
+- **5 Layouts:** spreadsheet, messenger, feed, matrix, research lab.
+- **Zero Dependencies.** Pure TypeScript, HTML, and CSS.
+- **No Required Schema.** Use the JSON you already output.
+- **Themes:** Full dark/light mode via URL parameter.
+- **Secure:** Built-in Content Security Policy headers.
+- **Accessible:** Semantic markup that's easy to restyle.
 
 ## One Limitation
-This is a stateless renderer. It does not store, persist, or manage user data between requests. For session-based features, you must bring your own state layer (e.g., Cloudflare KV).
+JSON payloads are limited to ~1 MB per request, as defined by the Cloudflare Worker runtime. This is a stateless renderer and will not store your data.
 
----
+Open source, MIT license.
+Attribution: Superinstance and Lucineer (DiGennaro et al.)
 
-MIT License • Superinstance & Lucineer (DiGennaro et al.)
-
----
-
-<div align="right">
-  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • 
-  <a href="https://cocapn.ai">Cocapn</a>
-</div>
+<div style="text-align:center;padding:16px;color:#64748b;font-size:.8rem"><a href="https://the-fleet.casey-digennaro.workers.dev" style="color:#64748b">The Fleet</a> &middot; <a href="https://cocapn.ai" style="color:#64748b">Cocapn</a></div>
